@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="每日奖励小红花A5打印模板 - 小巧便携的奖励卡">
+    <title>每日奖励小红花 (A5版) - 打印模板</title>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #F3EDE4;
+            --fg: #2C1810;
+            --muted: #9C8B7E;
+            --accent: #D94F3B;
+            --accent-dark: #B83D2D;
+            --accent-light: #FFF0EE;
+            --card: #FFFFFF;
+            --border: #E0D5C8;
+            --sidebar-bg: #221510;
+            --sidebar-text: #E8D8C8;
+            --slot-border: #E0A8A8;
+            --slot-bg: #FFF2F0;
+            --warm: #E8A860;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .app { display: flex; min-height: 100vh; }
+
+        .sidebar {
+            width: 260px;
+            min-width: 260px;
+            min-height: 100vh;
+            background: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 30px 20px 24px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(232,93,74,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .sidebar-brand {
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .sidebar-brand-icon {
+            font-size: 26px;
+            display: block;
+            margin-bottom: 8px;
+            color: var(--warm);
+            animation: gentleSpin 12s linear infinite;
+        }
+
+        @keyframes gentleSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .sidebar-title {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 20px;
+            color: var(--warm);
+            letter-spacing: 1px;
+        }
+
+        .sidebar-desc {
+            font-size: 11px;
+            color: rgba(232,216,200,0.4);
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .month-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            flex: 1;
+        }
+
+        .month-btn {
+            padding: 10px 4px 8px;
+            border: 1.5px solid rgba(232,216,200,0.1);
+            border-radius: 10px;
+            background: transparent;
+            color: var(--sidebar-text);
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .month-btn .m-icon {
+            font-size: 14px;
+            opacity: 0.35;
+            transition: all 0.25s ease;
+        }
+
+        .month-btn .m-days {
+            font-size: 9px;
+            opacity: 0.3;
+            transition: opacity 0.25s ease;
+        }
+
+        .month-btn:hover {
+            background: rgba(232,93,74,0.12);
+            border-color: rgba(232,93,74,0.4);
+            color: #fff;
+        }
+
+        .month-btn:hover .m-icon { opacity: 0.8; color: var(--accent); }
+        .month-btn:hover .m-days { opacity: 0.6; }
+
+        .month-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(217,79,59,0.45);
+        }
+
+        .month-btn.active .m-icon { opacity: 1; color: #fff; }
+        .month-btn.active .m-days { opacity: 0.8; }
+
+        .print-section { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+
+        .print-btn {
+            padding: 12px 16px;
+            border: none;
+            border-radius: 11px;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .print-btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .print-btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(217,79,59,0.4);
+        }
+
+        .print-btn-outline {
+            background: rgba(232,216,200,0.06);
+            color: var(--sidebar-text);
+            border: 1.5px solid rgba(232,216,200,0.15);
+        }
+
+        .print-btn-outline:hover {
+            background: rgba(232,216,200,0.14);
+            border-color: rgba(232,216,200,0.3);
+            transform: translateY(-2px);
+        }
+
+        .sidebar-tip {
+            font-size: 10px;
+            color: rgba(232,216,200,0.25);
+            text-align: center;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+            background:
+                radial-gradient(ellipse at 25% 15%, rgba(232,168,96,0.07) 0%, transparent 55%),
+                radial-gradient(ellipse at 75% 85%, rgba(217,79,59,0.05) 0%, transparent 55%),
+                var(--bg);
+        }
+
+        .preview-wrapper {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        /* A5纸张 - 148mm x 210mm */
+        .a5-paper {
+            width: 148mm;
+            height: 210mm;
+            background: #fff;
+            box-shadow:
+                0 1px 2px rgba(0,0,0,0.06),
+                0 4px 16px rgba(0,0,0,0.08),
+                0 16px 48px rgba(0,0,0,0.07),
+                0 32px 80px rgba(0,0,0,0.04);
+            border-radius: 3px;
+            overflow: hidden;
+            transform-origin: top center;
+            transition: transform 0.3s ease;
+        }
+
+        .month-content {
+            width: 100%;
+            height: 100%;
+            padding: 5mm 6mm;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-header {
+            text-align: center;
+            padding-bottom: 2.5mm;
+            margin-bottom: 2mm;
+            position: relative;
+        }
+
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15%;
+            right: 15%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .page-main-title {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 9pt;
+            color: var(--muted);
+            letter-spacing: 3px;
+            margin-bottom: 0.5mm;
+        }
+
+        .page-main-title .deco {
+            color: var(--warm);
+            margin: 0 3px;
+            font-size: 8pt;
+        }
+
+        .page-month-name {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 22pt;
+            color: var(--accent);
+            letter-spacing: 4px;
+            line-height: 1.2;
+        }
+
+        .page-subtitle {
+            font-size: 7pt;
+            color: var(--muted);
+            margin-top: 1mm;
+            letter-spacing: 0.5px;
+        }
+
+        .days-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .day-row {
+            display: flex;
+            align-items: center;
+            height: 6.8mm;
+            gap: 1.5mm;
+        }
+
+        .day-row.separator {
+            margin-top: 0.5mm;
+            padding-top: 0.5mm;
+            border-top: 0.5px dashed #EDE5DC;
+        }
+
+        .day-num {
+            width: 9mm;
+            font-size: 8.5pt;
+            font-weight: 600;
+            color: var(--fg);
+            text-align: right;
+            padding-right: 2mm;
+            flex-shrink: 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .day-num.weekend {
+            color: var(--accent);
+        }
+
+        .day-slots {
+            flex: 1;
+            display: flex;
+            gap: 1mm;
+        }
+
+        /* A5版本 - 24格贴纸，自适应铺满 */
+        .slot {
+            flex: 1;
+            height: 6mm;
+            border-radius: 50%;
+            border: 0.8pt solid var(--slot-border);
+            background: var(--slot-bg);
+            position: relative;
+            min-width: 4mm;
+            max-width: 6.5mm;
+        }
+
+        .slot::after {
+            content: '★';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.8mm;
+            color: rgba(217,79,59,0.07);
+            line-height: 1;
+        }
+
+        .page-footer {
+            margin-top: auto;
+            padding-top: 2mm;
+            border-top: 0.5px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .footer-info {
+            font-size: 6.5pt;
+            color: var(--muted);
+            display: flex;
+            flex-direction: column;
+            gap: 1mm;
+        }
+
+        .footer-line {
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+        }
+
+        .footer-label {
+            white-space: nowrap;
+            color: var(--muted);
+        }
+
+        .footer-underline {
+            display: inline-block;
+            width: 20mm;
+            border-bottom: 0.5px solid var(--border);
+        }
+
+        .footer-brand {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 7pt;
+            color: var(--accent);
+            opacity: 0.3;
+            text-align: right;
+        }
+
+        .float-hint {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 12px;
+            color: var(--muted);
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(10px);
+            padding: 8px 14px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 100;
+            animation: hintIn 0.6s ease 0.5s both;
+        }
+
+        @keyframes hintIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .float-hint i { color: var(--accent); }
+
+        .print-area { display: none; }
+
+        /* A5打印样式 */
+        @media print {
+            @page {
+                size: A5 portrait;
+                margin: 0;
+            }
+
+            html, body {
+                width: 148mm;
+                height: 210mm;
+                margin: 0;
+                padding: 0;
+                background: #fff;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            .app, .float-hint { display: none !important; }
+
+            .print-area {
+                display: block !important;
+            }
+
+            .print-page {
+                width: 148mm;
+                height: 210mm;
+                page-break-after: always;
+                page-break-inside: avoid;
+                overflow: hidden;
+            }
+
+            .print-page:last-child {
+                page-break-after: auto;
+            }
+        }
+
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in { animation: fadeSlideIn 0.28s ease forwards; }
+
+        @media (max-width: 1100px) {
+            .sidebar { width: 220px; min-width: 220px; padding: 24px 16px; }
+            .sidebar-title { font-size: 18px; }
+            .main { padding: 30px; }
+        }
+
+        @media (max-width: 860px) {
+            .app { flex-direction: column; }
+            .sidebar {
+                width: 100%;
+                min-width: unset;
+                min-height: auto;
+                padding: 20px 16px 16px;
+            }
+            .month-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 6px;
+            }
+            .month-btn { padding: 8px 2px 6px; font-size: 11px; }
+            .month-btn .m-days { display: none; }
+            .print-section { flex-direction: row; margin-top: 12px; }
+            .print-btn { flex: 1; padding: 10px 12px; font-size: 12px; }
+            .sidebar-tip { display: none; }
+            .main { padding: 16px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app" id="app">
+        <aside class="sidebar" role="navigation" aria-label="月份选择">
+            <div class="sidebar-brand">
+                <span class="sidebar-brand-icon"><i class="fas fa-fan"></i></span>
+                <div class="sidebar-title">小红花奖励册</div>
+            </div>
+            <div class="sidebar-desc">A5便携版<br>每行24格 · 小巧实用</div>
+            <div class="month-grid" id="monthGrid" role="tablist"></div>
+            <div class="print-section">
+                <button class="print-btn print-btn-primary" onclick="printCurrent()">
+                    <i class="fas fa-print"></i> 打印当前月
+                </button>
+                <button class="print-btn print-btn-outline" onclick="printAll()">
+                    <i class="fas fa-layer-group"></i> 打印全年
+                </button>
+            </div>
+            <div class="sidebar-tip">选择月份预览<br>打印时选「另存为PDF」</div>
+        </aside>
+
+        <main class="main" role="main">
+            <div class="preview-wrapper" id="previewWrapper">
+                <div class="a5-paper" id="a5Paper"></div>
+            </div>
+        </main>
+    </div>
+
+    <div class="float-hint" id="floatHint">
+        <i class="fas fa-lightbulb"></i>
+        A5尺寸：148mm × 210mm
+    </div>
+
+    <div class="print-area" id="printArea" aria-hidden="true"></div>
+
+    <script>
+        const MONTH_NAMES = [
+            '一月', '二月', '三月', '四月', '五月', '六月',
+            '七月', '八月', '九月', '十月', '十一月', '十二月'
+        ];
+        const MONTH_ICONS = [
+            'fa-snowflake', 'fa-heart', 'fa-seedling', 'fa-leaf',
+            'fa-sun', 'fa-umbrella-beach', 'fa-ice-cream', 'fa-fire',
+            'fa-cloud-sun', 'fa-mountain', 'fa-moon', 'fa-gift'
+        ];
+
+        /* A5版本 - 每行24格贴纸 */
+        const SLOTS_PER_ROW = 24;
+        let currentMonth = new Date().getMonth();
+
+        function getDaysInMonth(m) {
+            return new Date(2025, m + 1, 0).getDate();
+        }
+
+        function isWeekend(m, day) {
+            const d = new Date(2025, m, day);
+            const dow = d.getDay();
+            return dow === 0 || dow === 6;
+        }
+
+        function buildMonthHTML(m, isPrint) {
+            const days = getDaysInMonth(m);
+            let rows = '';
+
+            for (let d = 1; d <= days; d++) {
+                const sepClass = (d > 1 && d % 5 === 1) ? ' separator' : '';
+                const weClass = isWeekend(m, d) ? ' weekend' : '';
+
+                let slots = '';
+                for (let s = 0; s < SLOTS_PER_ROW; s++) {
+                    slots += '<div class="slot"></div>';
+                }
+
+                rows += `
+                    <div class="day-row${sepClass}">
+                        <div class="day-num${weClass}">${d}</div>
+                        <div class="day-slots">${slots}</div>
+                    </div>`;
+            }
+
+            const wrapperClass = isPrint ? 'print-page' : '';
+
+            return `
+                <div class="${wrapperClass}"${isPrint ? ' style="width:148mm;height:210mm;"' : ''}>
+                    <div class="month-content">
+                        <header class="page-header">
+                            <div class="page-main-title">
+                                <span class="deco">✿</span>
+                                每日奖励小红花
+                                <span class="deco">✿</span>
+                            </div>
+                            <div class="page-month-name">${MONTH_NAMES[m]}</div>
+                            <div class="page-subtitle">A5便携版 · 每天贴满小红花</div>
+                        </header>
+                        <div class="days-area">${rows}</div>
+                        <footer class="page-footer">
+                            <div class="footer-info">
+                                <div class="footer-line">
+                                    <span class="footer-label">姓名</span>
+                                    <span class="footer-underline"></span>
+                                </div>
+                                <div class="footer-line">
+                                    <span class="footer-label">本月总计</span>
+                                    <span class="footer-underline"></span>
+                                    <span class="footer-label">朵</span>
+                                </div>
+                            </div>
+                            <div class="footer-brand">✿ A5版 ✿</div>
+                        </footer>
+                    </div>
+                </div>`;
+        }
+
+        function renderGrid() {
+            const grid = document.getElementById('monthGrid');
+            grid.innerHTML = MONTH_NAMES.map((name, i) => {
+                const days = getDaysInMonth(i);
+                const active = i === currentMonth ? ' active' : '';
+                return `
+                    <button class="month-btn${active}" onclick="switchMonth(${i})" role="tab">
+                        <span class="m-icon"><i class="fas ${MONTH_ICONS[i]}"></i></span>
+                        <span>${name}</span>
+                        <span class="m-days">${days}天</span>
+                    </button>`;
+            }).join('');
+        }
+
+        function switchMonth(i) {
+            currentMonth = i;
+            renderGrid();
+            const paper = document.getElementById('a5Paper');
+            paper.innerHTML = buildMonthHTML(i, false);
+            const mc = paper.querySelector('.month-content');
+            mc.classList.remove('fade-in');
+            void mc.offsetWidth;
+            mc.classList.add('fade-in');
+        }
+
+        function printCurrent() {
+            const area = document.getElementById('printArea');
+            area.innerHTML = buildMonthHTML(currentMonth, true);
+            requestAnimationFrame(() => {
+                setTimeout(() => window.print(), 120);
+            });
+        }
+
+        function printAll() {
+            const area = document.getElementById('printArea');
+            let html = '';
+            for (let i = 0; i < 12; i++) {
+                html += buildMonthHTML(i, true);
+            }
+            area.innerHTML = html;
+            requestAnimationFrame(() => {
+                setTimeout(() => window.print(), 250);
+            });
+        }
+
+        function fitScale() {
+            const paper = document.getElementById('a5Paper');
+            const main = document.querySelector('.main');
+            if (!main || !paper) return;
+
+            const pw = 148 * 3.7795275591;
+            const ph = 210 * 3.7795275591;
+
+            const availW = main.clientWidth - 40;
+            const availH = main.clientHeight - 40;
+
+            const scale = Math.min(availW / pw, availH / ph, 1);
+
+            paper.style.transform = `scale(${scale})`;
+            const wrapper = document.getElementById('previewWrapper');
+            wrapper.style.width = (pw * scale) + 'px';
+            wrapper.style.height = (ph * scale) + 'px';
+        }
+
+        function autoHideHint() {
+            const hint = document.getElementById('floatHint');
+            setTimeout(() => {
+                hint.style.transition = 'opacity 0.6s ease';
+                hint.style.opacity = '0';
+                setTimeout(() => { hint.style.display = 'none'; }, 600);
+            }, 5000);
+        }
+
+        renderGrid();
+        switchMonth(currentMonth);
+        window.addEventListener('resize', fitScale);
+        window.addEventListener('load', () => {
+            fitScale();
+            autoHideHint();
+        });
+        requestAnimationFrame(fitScale);
+    </script>
+</body>
+</html>
