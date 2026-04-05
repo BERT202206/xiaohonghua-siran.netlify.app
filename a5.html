@@ -138,46 +138,64 @@
         .a5-content {
             width: 100%;
             height: 100%;
-            padding: 8mm 10mm;
+            padding: 6mm 10mm 8mm;
             display: flex;
             flex-direction: column;
         }
 
         .page-header {
             text-align: center;
-            padding-bottom: 4mm;
+            padding-bottom: 3mm;
             border-bottom: 1px solid var(--accent);
-            margin-bottom: 4mm;
+            margin-bottom: 2mm;
         }
 
         .page-title {
             font-family: 'ZCOOL KuaiLe', cursive;
-            font-size: 18pt;
+            font-size: 16pt;
             color: var(--accent);
             letter-spacing: 2px;
         }
 
         .page-subtitle {
-            font-size: 9pt;
+            font-size: 8pt;
             color: var(--muted);
-            margin-top: 1mm;
+            margin-top: 0.5mm;
         }
 
-        /* 日期表格布局 */
+        /* 姓名栏 - 移到顶部 */
+        .name-section {
+            text-align: center;
+            font-size: 10pt;
+            color: var(--fg);
+            margin-bottom: 3mm;
+            padding: 1.5mm 0;
+        }
+
+        .name-section span {
+            display: inline-block;
+            min-width: 35mm;
+            border-bottom: 1px solid var(--fg);
+            margin-left: 2mm;
+        }
+
+        /* 日期表格布局 - 自动铺满 */
         .days-table {
-            display: table;
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 2.5mm;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+            padding: 2mm 0;
+        }
+
+        .day-row {
+            display: flex;
+            align-items: center;
+            flex: 1;
         }
 
         .day-row {
             display: table-row;
-        }
-
-        .day-cell {
-            display: table-cell;
-            vertical-align: middle;
         }
 
         .day-num {
@@ -186,6 +204,7 @@
             font-weight: 700;
             text-align: center;
             color: var(--fg);
+            flex-shrink: 0;
         }
 
         .day-num.weekend {
@@ -197,6 +216,8 @@
             display: flex;
             gap: 2mm;
             padding-left: 3mm;
+            flex: 1;
+            justify-content: space-between;
         }
 
         /* 完美的圆形格子 */
@@ -221,19 +242,17 @@
         }
 
         .page-footer {
-            margin-top: auto;
-            padding-top: 4mm;
+            margin-top: 2mm;
+            padding-top: 2mm;
             border-top: 0.5px solid #ddd;
-            display: flex;
-            justify-content: space-between;
-            font-size: 8pt;
-            color: var(--muted);
+            text-align: center;
         }
 
-        .footer-brand {
+        .encouragement {
             font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 11pt;
             color: var(--accent);
-            opacity: 0.4;
+            letter-spacing: 1px;
         }
 
         .print-area { display: none; }
@@ -310,6 +329,26 @@
         let currentMonth = new Date().getMonth();
         const SLOTS_PER_ROW = 13; // 每行13个完美圆形格子，充分利用A5宽度
 
+        // 鼓励话语
+        const ENCOURAGEMENTS = [
+            "你是最棒的小宝贝！加油！",
+            "每一朵小红花都是进步的证明！",
+            "坚持就是胜利，你很棒！",
+            "努力的你闪闪发光！",
+            "今天的努力是明天的骄傲！",
+            "相信自己，你一定能行！",
+            "认真做事的孩子最可爱！",
+            "你的进步让爸爸妈妈骄傲！",
+            "每一天都在变得更好！",
+            "努力的小种子终将开花结果！",
+            "你是最闪亮的星星！",
+            "坚持好习惯，做最棒的自己！"
+        ];
+
+        function getEncouragement(m) {
+            return ENCOURAGEMENTS[m] || ENCOURAGEMENTS[0];
+        }
+
         function getDaysInMonth(m) {
             return new Date(2025, m + 1, 0).getDate();
         }
@@ -333,9 +372,7 @@
                 rows += `
                     <div class="day-row">
                         <div class="day-num${weClass}">${d}</div>
-                        <div class="day-cell">
-                            <div class="slots-container">${slots}</div>
-                        </div>
+                        <div class="slots-container">${slots}</div>
                     </div>`;
             }
 
@@ -349,10 +386,10 @@
                             <div class="page-title">${MONTH_NAMES[m]} ${pageLabel}</div>
                             <div class="page-subtitle">每日奖励小红花 · 坚持就是胜利</div>
                         </header>
+                        <div class="name-section">宝贝姓名：<span></span></div>
                         <div class="days-table">${rows}</div>
                         <footer class="page-footer">
-                            <span>姓名：__________</span>
-                            <span class="footer-brand">✿ 小红花奖励册 ✿</span>
+                            <div class="encouragement">${getEncouragement(m)}</div>
                         </footer>
                     </div>
                 </div>`;
