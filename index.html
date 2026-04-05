@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="每日奖励小红花打印模板 - 帮助孩子养成好习惯的可打印奖励卡">
+    <meta name="keywords" content="小红花,奖励卡,习惯养成,打印模板,儿童教育">
+    <meta name="author" content="小红花奖励册">
+    <title>每日奖励小红花 - 打印模板</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- 屏幕界面 -->
+    <div class="app" id="app">
+        <aside class="sidebar" role="navigation" aria-label="月份选择">
+            <div class="sidebar-brand">
+                <span class="sidebar-brand-icon"><i class="fas fa-fan"></i></span>
+                <div class="sidebar-title">小红花奖励册</div>
+            </div>
+            <div class="sidebar-desc">贴纸铺满整行<br>记录成长的每一步</div>
+            <div class="month-grid" id="monthGrid" role="tablist"></div>
+            <div class="print-section">
+                <button class="print-btn print-btn-primary" onclick="printCurrent()" aria-label="打印当前月份">
+                    <i class="fas fa-print"></i> 打印当前月
+                </button>
+                <button class="print-btn print-btn-outline" onclick="printAll()" aria-label="打印全年12个月">
+                    <i class="fas fa-layer-group"></i> 打印全年
+                </button>
+            </div>
+            <div class="sidebar-tip">点击左上角花朵图标选月<br>打印时选「另存为PDF」即可</div>
+        </aside>
+
+        <main class="main" role="main">
+            <div class="preview-wrapper" id="previewWrapper">
+                <div class="a4-paper" id="a4Paper"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 浮动提示 -->
+    <div class="float-hint" id="floatHint">
+        <i class="fas fa-lightbulb"></i>
+        打印时选择「另存为 PDF」即可生成文件
+    </div>
+
+    <!-- 打印专用区域（屏幕隐藏） -->
+    <div class="print-area" id="printArea" aria-hidden="true"></div>
+
+    <!-- 应用脚本 -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
