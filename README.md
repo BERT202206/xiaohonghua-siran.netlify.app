@@ -1,6 +1,6 @@
 # 小红花奖励册 🌸
 
-[![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)](https://github.com/BERT202206/xiaohonghua-siran.netlify.app/releases/tag/v3.0.0)
+[![Version](https://img.shields.io/badge/version-4.0.0-blue.svg)](https://github.com/BERT202206/xiaohonghua-siran.netlify.app/releases/tag/v4.0.0)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_BADGE_ID/deploy-status)](https://app.netlify.com/sites/xiaohonghua-siran/deploys)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -142,6 +142,15 @@ xiaohonghua-siran.netlify.app/
 ---
 
 ## 📝 更新日志
+
+### v4.0.0 (2026-04-06)
+
+**✨ 最终优化版本**
+
+- ✅ **优化纸张预览位置** - 更贴近顶部，布局更紧凑
+- ✅ **精致间距调整** - 10px 顶部边距，视觉更平衡
+- ✅ **完善 README 文档**
+- ✅ **稳定版本发布** - 推荐用于生产环境
 
 ### v3.0.0 (2026-04-06)
 
