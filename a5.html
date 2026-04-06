@@ -28,13 +28,13 @@
         .a5-paper{width:148mm;height:210mm;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.1);border-radius:3px;overflow:hidden}
         .month-content{width:100%;height:100%;padding:8mm;display:flex;flex-direction:column}
         .page-header{text-align:center;padding-bottom:4mm;margin-bottom:4mm;border-bottom:1px solid var(--accent)}
-        .page-title{font-family:"ZCOOL KuaiLe",cursive;font-size:13pt;color:var(--muted);letter-spacing:4px;margin-bottom:3mm}
+        .page-title{font-family:"ZCOOL KuaiLe",cursive;font-size:13pt;color:var(--accent);letter-spacing:4px;margin-bottom:3mm}
         .page-header-row{display:flex;align-items:center;justify-content:center;gap:8mm}
         .page-month{font-family:"ZCOOL KuaiLe",cursive;font-size:28pt;color:var(--accent)}
         .page-section{font-family:"ZCOOL KuaiLe",cursive;font-size:16pt;color:var(--warm)}
         .name-box{display:flex;align-items:center;gap:2mm}
         .name-label{font-family:"ZCOOL KuaiLe",cursive;font-size:12pt;color:var(--warm)}
-        .name-line{width:25mm;border-bottom:1px solid var(--fg)}
+        .name-line{width:25mm;border-bottom:1px solid var(--fg);transform:translateY(6px);display:inline-block}
         .days-area{flex:1;display:flex;flex-direction:column;justify-content:center;gap:4mm}
         .day-row{display:flex;align-items:center;height:12mm;gap:3mm}
         .day-num{width:10mm;font-size:13pt;font-weight:600;text-align:right;padding-right:2mm}
@@ -74,7 +74,7 @@
                 for(let s=0;s<10;s++)slots+="<div class='slot'></div>";
                 rows+=`<div class='day-row'><div class='day-num${isWeekend(m,d)?" weekend":""}'>${String(d).padStart(2,"0")}</div><div class='day-slots'>${slots}</div></div>`;
             }
-            return `<div class='${isPrint?"print-page":""}' style='${isPrint?"width:148mm;height:210mm;":""}'><div class='month-content'><header class='page-header'><div class='page-title'>✿每日奖励小红花✿</div><div class='page-header-row'><div class='page-month'>${MONTHS[m]}</div><div class='page-section'>${sec.name}</div><div class='name-box'><span class='name-label'>姓名</span><span class='name-line'></span></div></div></header><div class='days-area'>${rows}</div><footer class='page-footer'><span>本页总计:_____朵小红花</span><span>✿</span></footer></div></div>`;
+            return `<div class='${isPrint?"print-page":""}' style='${isPrint?"width:148mm;height:210mm;":""}'><div class='month-content'><header class='page-header'><div class='page-title'>✿每日奖励<span style='color:var(--accent)'>小红花</span>✿</div><div class='page-header-row'><div class='page-month'>${MONTHS[m]}</div><div class='page-section'>${sec.name}</div><div class='name-box'><span class='name-label'>姓名</span><span class='name-line'></span></div></div></header><div class='days-area'>${rows}</div><footer class='page-footer'><span>本页总计:_____朵小红花</span><span>✿</span></footer></div></div>`;
         }
         function renderGrid(){
             let html="";
