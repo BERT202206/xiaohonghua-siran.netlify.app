@@ -1,0 +1,530 @@
+:root {
+    --bg: #F3EDE4;
+    --fg: #2C1810;
+    --muted: #9C8B7E;
+    --accent: #D94F3B;
+    --accent-dark: #B83D2D;
+    --accent-light: #FFF0EE;
+    --card: #FFFFFF;
+    --border: #E0D5C8;
+    --sidebar-bg: #221510;
+    --sidebar-text: #E8D8C8;
+    --slot-border: #E0A8A8;
+    --slot-bg: #FFF2F0;
+    --warm: #E8A860;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ===== 主布局 ===== */
+.app { display: flex; min-height: 100vh; }
+
+/* ===== 侧边栏 ===== */
+.sidebar {
+    width: 270px;
+    min-width: 270px;
+    min-height: 100vh;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding: 36px 22px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+
+/* 侧边栏装饰光晕 */
+.sidebar::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(232,93,74,0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.sidebar-brand {
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.sidebar-brand-icon {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 8px;
+    color: var(--warm);
+    animation: gentleSpin 12s linear infinite;
+}
+
+@keyframes gentleSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.sidebar-title {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 22px;
+    color: var(--warm);
+    letter-spacing: 1px;
+}
+
+.sidebar-desc {
+    font-size: 11px;
+    color: rgba(232,216,200,0.4);
+    text-align: center;
+    margin-bottom: 28px;
+    line-height: 1.6;
+}
+
+/* 月份网格 */
+.month-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    flex: 1;
+}
+
+.month-btn {
+    padding: 10px 4px 8px;
+    border: 1.5px solid rgba(232,216,200,0.1);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--sidebar-text);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.month-btn .m-icon {
+    font-size: 14px;
+    opacity: 0.35;
+    transition: all 0.25s ease;
+}
+
+.month-btn .m-days {
+    font-size: 9px;
+    opacity: 0.3;
+    transition: opacity 0.25s ease;
+}
+
+.month-btn:hover {
+    background: rgba(232,93,74,0.12);
+    border-color: rgba(232,93,74,0.4);
+    color: #fff;
+}
+
+.month-btn:hover .m-icon { opacity: 0.8; color: var(--accent); }
+.month-btn:hover .m-days { opacity: 0.6; }
+
+.month-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(217,79,59,0.45);
+}
+
+.month-btn.active .m-icon { opacity: 1; color: #fff; }
+.month-btn.active .m-days { opacity: 0.8; }
+
+/* 打印按钮 */
+.print-section { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+
+.print-btn {
+    padding: 13px 16px;
+    border: none;
+    border-radius: 11px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    letter-spacing: 0.5px;
+}
+
+.print-btn-primary {
+    background: var(--accent);
+    color: #fff;
+}
+
+.print-btn-primary:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(217,79,59,0.4);
+}
+
+.print-btn-primary:active { transform: translateY(0); }
+
+.print-btn-outline {
+    background: rgba(232,216,200,0.06);
+    color: var(--sidebar-text);
+    border: 1.5px solid rgba(232,216,200,0.15);
+}
+
+.print-btn-outline:hover {
+    background: rgba(232,216,200,0.14);
+    border-color: rgba(232,216,200,0.3);
+    transform: translateY(-2px);
+}
+
+.print-btn-outline:active { transform: translateY(0); }
+
+.sidebar-tip {
+    font-size: 10px;
+    color: rgba(232,216,200,0.25);
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1.5;
+}
+
+/* ===== 主区域 ===== */
+.main {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+    background:
+        radial-gradient(ellipse at 25% 15%, rgba(232,168,96,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 85%, rgba(217,79,59,0.05) 0%, transparent 55%),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 19px,
+            rgba(0,0,0,0.015) 19px,
+            rgba(0,0,0,0.015) 20px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 19px,
+            rgba(0,0,0,0.015) 19px,
+            rgba(0,0,0,0.015) 20px
+        ),
+        var(--bg);
+}
+
+.preview-wrapper {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+/* A4纸张 */
+.a4-paper {
+    width: 210mm;
+    height: 297mm;
+    background: #fff;
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.06),
+        0 4px 16px rgba(0,0,0,0.08),
+        0 16px 48px rgba(0,0,0,0.07),
+        0 32px 80px rgba(0,0,0,0.04);
+    border-radius: 3px;
+    overflow: hidden;
+    transform-origin: top center;
+    transition: transform 0.3s ease;
+}
+
+/* ===== 月份页面内容 ===== */
+.month-content {
+    width: 100%;
+    height: 100%;
+    padding: 7mm 8mm;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 页眉 */
+.page-header {
+    text-align: center;
+    padding-bottom: 3.5mm;
+    margin-bottom: 2.5mm;
+    position: relative;
+}
+
+.page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    right: 15%;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.page-main-title {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 11pt;
+    color: var(--muted);
+    letter-spacing: 4px;
+    margin-bottom: 1mm;
+}
+
+.page-main-title .deco {
+    color: var(--warm);
+    margin: 0 4px;
+    font-size: 9pt;
+}
+
+.page-month-name {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 28pt;
+    color: var(--accent);
+    letter-spacing: 6px;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    font-size: 7.5pt;
+    color: var(--muted);
+    margin-top: 1.5mm;
+    letter-spacing: 1px;
+}
+
+/* 日期行 */
+.days-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.day-row {
+    display: flex;
+    align-items: center;
+    height: 8.5mm;
+    gap: 2mm;
+}
+
+/* 每隔5天加淡分隔 */
+.day-row.separator {
+    margin-top: 0.8mm;
+    padding-top: 0.8mm;
+    border-top: 0.5px dashed #EDE5DC;
+}
+
+.day-num {
+    width: 11mm;
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: var(--fg);
+    text-align: right;
+    padding-right: 2.5mm;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.day-num.weekend {
+    color: var(--accent);
+}
+
+.day-slots {
+    flex: 1;
+    display: flex;
+    gap: 1.3mm;
+}
+
+/* 空格子 - 自适应宽度铺满 */
+.slot {
+    flex: 1;
+    height: 8mm;
+    border-radius: 50%;
+    border: 0.9pt solid var(--slot-border);
+    background: var(--slot-bg);
+    position: relative;
+    min-width: 6mm;
+    max-width: 9mm;
+}
+
+/* 格子内淡星装饰 */
+.slot::after {
+    content: '★';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.5mm;
+    color: rgba(217,79,59,0.07);
+    line-height: 1;
+}
+
+/* 页脚 */
+.page-footer {
+    margin-top: auto;
+    padding-top: 2.5mm;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.footer-info {
+    font-size: 7pt;
+    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5mm;
+}
+
+.footer-line {
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+}
+
+.footer-label {
+    white-space: nowrap;
+    color: var(--muted);
+}
+
+.footer-underline {
+    display: inline-block;
+    width: 28mm;
+    border-bottom: 0.5px solid var(--border);
+}
+
+.footer-brand {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 8pt;
+    color: var(--accent);
+    opacity: 0.3;
+    text-align: right;
+}
+
+/* ===== 浮动提示 ===== */
+.float-hint {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 12px;
+    color: var(--muted);
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    padding: 8px 14px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 100;
+    animation: hintIn 0.6s ease 0.5s both;
+}
+
+@keyframes hintIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.float-hint i { color: var(--accent); }
+
+/* ===== 打印区域（屏幕隐藏） ===== */
+.print-area { display: none; }
+
+/* ===== 打印样式 ===== */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    html, body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+    .app, .float-hint { display: none !important; }
+
+    .print-area {
+        display: block !important;
+    }
+
+    .print-page {
+        width: 210mm;
+        height: 297mm;
+        page-break-after: always;
+        page-break-inside: avoid;
+        overflow: hidden;
+    }
+
+    .print-page:last-child {
+        page-break-after: auto;
+    }
+}
+
+/* ===== 淡入动画 ===== */
+@keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { animation: fadeSlideIn 0.28s ease forwards; }
+
+/* ===== 响应式 ===== */
+@media (max-width: 1100px) {
+    .sidebar { width: 220px; min-width: 220px; padding: 24px 16px; }
+    .sidebar-title { font-size: 19px; }
+    .main { padding: 24px; }
+}
+
+@media (max-width: 860px) {
+    .app { flex-direction: column; }
+    .sidebar {
+        width: 100%;
+        min-width: unset;
+        min-height: auto;
+        padding: 20px 16px 16px;
+        flex-direction: column;
+    }
+    .sidebar-brand { margin-bottom: 4px; }
+    .sidebar-brand-icon { font-size: 22px; margin-bottom: 4px; }
+    .month-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 6px;
+    }
+    .month-btn { padding: 8px 2px 6px; font-size: 11px; }
+    .month-btn .m-icon { font-size: 12px; }
+    .month-btn .m-days { display: none; }
+    .print-section { flex-direction: row; margin-top: 12px; }
+    .print-btn { flex: 1; padding: 10px 12px; font-size: 12px; }
+    .sidebar-tip { display: none; }
+    .main { padding: 16px; align-items: flex-start; }
+}
+
+/* ===== 减弱动画 ===== */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
