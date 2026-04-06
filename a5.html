@@ -74,7 +74,7 @@
                 for(let s=0;s<10;s++)slots+="<div class='slot'></div>";
                 rows+=`<div class='day-row'><div class='day-num${isWeekend(m,d)?" weekend":""}'>${String(d).padStart(2,"0")}</div><div class='day-slots'>${slots}</div></div>`;
             }
-            return `<div class='${isPrint?"print-page":""}' style='${isPrint?"width:148mm;height:210mm;":""}'><div class='month-content'><header class='page-header'><div class='page-title'>✿每日奖励<span style='color:var(--accent)'>小红花</span>✿</div><div class='page-header-row'><div class='page-month'>${MONTHS[m]}</div><div class='page-section'>${sec.name}</div><div class='name-box'><span class='name-label'>姓名</span><span class='name-line'></span></div></div></header><div class='days-area'>${rows}</div><footer class='page-footer'><span>本页总计:_____朵小红花</span><span>✿</span></footer></div></div>`;
+            return `<div class='${isPrint?"print-page":""}' style='${isPrint?"width:148mm;height:210mm;":""}'><div class='month-content'><header class='page-header'><div class='page-title'>✿每日奖励<span style='color:var(--accent)'>小红花</span>✿</div><div class='page-header-row'><div class='page-month'>${MONTHS[m]}</div><div class='page-section'>${sec.name}</div><div class='name-box'><span class='name-label'>姓名</span><span class='name-line'></span></div></div></header><div class='days-area'>${rows}</div><footer class='page-footer'><span>本页总计:_____朵<span style='color:var(--accent)'>小红花</span></span><span>✿</span></footer></div></div>`;
         }
         function renderGrid(){
             let html="";
