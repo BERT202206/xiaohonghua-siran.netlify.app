@@ -1,6 +1,6 @@
 # 小红花奖励册 🌸
 
-[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/BERT202206/xiaohonghua-siran.netlify.app/releases/tag/v2.0.0)
+[![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)](https://github.com/BERT202206/xiaohonghua-siran.netlify.app/releases/tag/v3.0.0)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_BADGE_ID/deploy-status)](https://app.netlify.com/sites/xiaohonghua-siran/deploys)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -15,6 +15,11 @@
 ---
 
 ## ✨ 功能特点
+
+### 🎨 精美卡片式侧边栏
+- **药丸式年份选择器** - 渐变背景，悬浮动画
+- **月份卡片设计** - 圆角阴影，视觉层次清晰
+- **流畅过渡动画** - 精致 Hover 效果
 
 ### 🗓️ 智能年份选择
 - 支持 **2026-2030** 年份切换
@@ -137,6 +142,16 @@ xiaohonghua-siran.netlify.app/
 ---
 
 ## 📝 更新日志
+
+### v3.0.0 (2026-04-06)
+
+**🎨 UI 全面升级**
+
+- ✅ **全新卡片式侧边栏** - 渐变背景 + 圆角阴影设计
+- ✅ **药丸式年份选择器** - 悬浮动画 + 渐变高亮
+- ✅ **月份卡片设计** - 视觉层次更清晰
+- ✅ **优化布局** - 移除描述文字，一屏完整显示
+- ✅ **精致过渡动画** - Hover 效果更流畅
 
 ### v2.0.0 (2026-04-06)
 
