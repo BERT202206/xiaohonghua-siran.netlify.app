@@ -43,7 +43,7 @@
         .slot{width:10mm;height:10mm;border-radius:50%;border:1.5pt solid var(--slot-border);background:var(--slot-bg)}
         .page-footer{margin-top:auto;padding-top:4mm;border-top:0.5px solid #ddd;display:flex;justify-content:space-between;font-size:10pt;color:var(--muted)}
         .print-area{display:none}
-        @media print{.app{display:none!important}.print-area{display:block!important}}
+        @media print{@page{size:A5 portrait;margin:0}html,body{width:148mm;height:210mm;margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}.app{display:none!important}.print-area{display:block!important}}
     </style>
 </head>
 <body>
