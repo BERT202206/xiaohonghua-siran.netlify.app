@@ -1,6 +1,6 @@
 # 小红花奖励册 🌸
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/BERT202206/xiaohonghua-siran.netlify.app/releases/tag/v1.0.0)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/BERT202206/xiaohonghua-siran.netlify.app/releases/tag/v2.0.0)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 > 每日奖励小红花 A5 打印模板 - 专为儿童设计的习惯养成打卡工具
@@ -8,9 +8,10 @@
 ## ✨ 功能特点
 
 - **A5 尺寸** - 148mm × 210mm，适合打印和装订成册
+- **年份选择** - 支持 2026-2030 年份切换，周末日期自动标红
 - **三页合一** - 一个网页包含 1-10日、11-20日、21-月底 三个时间段
-- **统一格式** - 所有月份行间距一致，大小月格式相同
 - **10格大贴纸位** - 每行 10 个 10mm 圆形贴纸位，完美匹配 8mm 小红花贴纸
+- **周末自动标红** - 根据所选年份自动计算周末并红色标注
 - **精美设计** - 温暖配色，卡通风格，儿童友好
 
 ## 📐 格式规格
@@ -33,7 +34,7 @@
    git clone https://github.com/BERT202206/xiaohonghua-siran.netlify.app.git
    ```
 
-2. 打开 `a5.html` 文件，选择月份和时间段预览
+2. 打开 `a5.html` 文件，选择年份、月份和时间段预览
 
 3. 点击「打印当前」或「打印全年(36页)」进行打印
 
@@ -54,9 +55,12 @@
 ## 📝 更新日志
 
 ### v2.0.0 (2026-04-06)
+- ✅ **年份选择功能** - 支持 2026-2030 年份切换
+- ✅ **周末自动标红** - 根据所选年份自动计算周末
 - ✅ 三页合一设计（1-10日、11-20日、21-月底）
 - ✅ 10mm大格子，完美匹配 8mm 小红花贴纸
 - ✅ 姓名移至顶部，与月份日期同行
+- ✅ 侧边栏宽度优化至 350px
 - ✅ 支持全年 36 页打印（12个月 × 3页）
 
 ### v1.0.0 (2026-04-06)
