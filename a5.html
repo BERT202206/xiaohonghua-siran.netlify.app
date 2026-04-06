@@ -8,11 +8,11 @@
     <style>
         :root{--bg:#F3EDE4;--fg:#2C1810;--muted:#9C8B7E;--accent:#D94F3B;--slot-border:#E0A8A8;--slot-bg:#FFF2F0;--warm:#E8A860;--sidebar-bg:#221510;--sidebar-text:#E8D8C8}
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:"Noto Sans SC",sans-serif;background:var(--bg);color:var(--fg);min-height:100vh}
+        @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}body{font-family:"Noto Sans SC",sans-serif;background:var(--bg);color:var(--fg);min-height:100vh}
         .app{display:flex;min-height:100vh}
         .sidebar{width:300px;min-width:300px;background:var(--sidebar-bg);color:var(--sidebar-text);padding:30px 20px;display:flex;flex-direction:column}
         .sidebar-brand{text-align:center;margin-bottom:10px}
-        .sidebar-brand-icon{font-size:28px;color:var(--warm);margin-bottom:8px}
+        .sidebar-brand-icon{font-size:28px;color:var(--warm);margin-bottom:8px;animation:spin 3s linear infinite}
         .sidebar-title{font-family:"ZCOOL KuaiLe",cursive;font-size:22px;color:var(--warm)}
         .version-badge{display:inline-block;background:var(--accent);color:#fff;font-size:10px;padding:2px 10px;border-radius:10px;margin-top:6px}
         .sidebar-desc{font-size:11px;color:rgba(232,216,200,0.5);text-align:center;margin:15px 0 20px}
