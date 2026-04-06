@@ -11,22 +11,22 @@
         *{margin:0;padding:0;box-sizing:border-box}
         @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}body{font-family:"Noto Sans SC",sans-serif;background:var(--bg);color:var(--fg);min-height:100vh}
         .app{display:flex;min-height:100vh}
-        .sidebar{width:350px;min-width:350px;background:var(--sidebar-bg);color:var(--sidebar-text);padding:30px 20px;display:flex;flex-direction:column}
-        .sidebar-brand{text-align:center;margin-bottom:10px}
-        .sidebar-brand-icon{font-size:28px;color:var(--warm);margin-bottom:8px;animation:spin 3s linear infinite}
-        .sidebar-title{font-family:"ZCOOL KuaiLe",cursive;font-size:22px;color:var(--warm)}
+        .sidebar{width:350px;min-width:350px;height:100vh;background:var(--sidebar-bg);color:var(--sidebar-text);padding:15px 15px;display:flex;flex-direction:column;overflow:hidden}
+        .sidebar-brand{text-align:center;margin-bottom:5px}
+        .sidebar-brand-icon{font-size:24px;color:var(--warm);margin-bottom:4px;animation:spin 3s linear infinite}
+        .sidebar-title{font-family:"ZCOOL KuaiLe",cursive;font-size:18px;color:var(--warm)}
         .version-badge{display:inline-block;background:var(--accent);color:#fff;font-size:10px;padding:2px 10px;border-radius:10px;margin-top:6px}
         .sidebar-desc{font-size:11px;color:rgba(232,216,200,0.5);text-align:center;margin:15px 0 20px}
-        .month-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;flex:1}
-        .section-tabs{display:flex;gap:3px;margin-top:6px}
-        .section-tab{flex:1;padding:5px 0;border:1px solid rgba(232,216,200,0.2);border-radius:4px;background:transparent;color:var(--sidebar-text);font-size:10px;cursor:pointer}
-        .year-selector{display:flex;justify-content:center;gap:5px;margin-bottom:15px;padding:10px;background:rgba(255,255,255,0.05);border-radius:8px}
-        .year-btn{padding:6px 12px;border:1px solid rgba(232,216,200,0.2);border-radius:5px;background:transparent;color:var(--sidebar-text);font-size:12px;cursor:pointer;transition:all 0.2s}
+        .month-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;flex:1;overflow:hidden}
+        .section-tabs{display:flex;gap:2px;margin-top:3px}
+        .section-tab{flex:1;padding:3px 0;border:1px solid rgba(232,216,200,0.2);border-radius:3px;background:transparent;color:var(--sidebar-text);font-size:9px;cursor:pointer}
+        .year-selector{display:flex;justify-content:center;gap:4px;padding:6px;background:rgba(255,255,255,0.05);border-radius:6px}
+        .year-btn{padding:4px 10px;border:1px solid rgba(232,216,200,0.2);border-radius:4px;background:transparent;color:var(--sidebar-text);font-size:11px;cursor:pointer;transition:all 0.2s}
         .year-btn:hover{background:rgba(232,93,74,0.2)}
         .year-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
         .section-tab.active{background:var(--accent);border-color:var(--accent)}
-        .print-section{margin-top:20px;display:flex;flex-direction:column;gap:10px}
-        .print-btn{padding:12px;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+        .print-section{margin-top:10px;display:flex;flex-direction:column;gap:6px;flex-shrink:0}
+        .print-btn{padding:8px;border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px}
         .print-btn-primary{background:var(--accent);color:#fff}
         .print-btn-outline{background:rgba(232,216,200,0.08);color:var(--sidebar-text);border:1.5px solid rgba(232,216,200,0.2)}
         .main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:40px;background:var(--bg)}
@@ -55,8 +55,7 @@
     <div class="app">
         <aside class="sidebar">
             <div class="sidebar-brand"><i class="fas fa-fan sidebar-brand-icon"></i><div class="sidebar-title">小红花奖励册</div><div class="version-badge">A5打印版</div></div>
-            <div class="sidebar-desc">选择年份、月份和时间段<br>10mm大格子·每行10格</div>
-            <div id="yearSelector" class="year-selector"></div>
+            <div id="yearSelector" class="year-selector" style="margin-top:10px;margin-bottom:10px;padding:8px;"></div>
             <div id="monthGrid" class="month-grid"></div>
             <div class="print-section">
                 <button class="print-btn print-btn-primary" onclick="printCurrent()"><i class="fas fa-print"></i>打印当前</button>
@@ -101,7 +100,7 @@
         function renderGrid(){
             let html="";
             MONTHS.forEach((name,i)=>{
-                html+=`<div style='text-align:center'><div style='font-size:11px;margin-bottom:4px'>${name}</div><div class='section-tabs'>`;
+                html+=`<div style='text-align:center'><div style='font-size:10px;margin-bottom:2px;line-height:1.2'>${name}</div><div class='section-tabs'>`;
                 SECTIONS.forEach((sec,j)=>{
                     const active=(i===curMonth&&j===curSection)?" active":"";
                     html+=`<button class='section-tab${active}' onclick='switchSection(${i},${j})'>${sec.name}</button>`;
