@@ -106,59 +106,59 @@
 
         .month-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
+            grid-template-columns: repeat(2, 1fr); /* 2列展示月份 */
+            gap: 10px;
             flex: 1;
         }
 
-        .month-btn {
-            padding: 10px 4px 8px;
-            border: 1.5px solid rgba(232,216,200,0.1);
-            border-radius: 10px;
-            background: transparent;
-            color: var(--sidebar-text);
-            font-family: 'Noto Sans SC', sans-serif;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.25s ease;
+        .month-group {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 3px;
-            position: relative;
-            overflow: hidden;
+            gap: 5px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(232, 216, 200, 0.1);
         }
 
-        .month-btn .m-icon {
-            font-size: 14px;
-            opacity: 0.35;
-            transition: all 0.25s ease;
+        .month-label {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 13px;
+            color: var(--sidebar-text);
+            text-align: center;
+            opacity: 0.8;
         }
 
-        .month-btn .m-days {
-            font-size: 9px;
-            opacity: 0.3;
-            transition: opacity 0.25s ease;
+        .half-btns {
+            display: flex;
+            gap: 4px;
         }
 
-        .month-btn:hover {
-            background: rgba(232,93,74,0.12);
-            border-color: rgba(232,93,74,0.4);
-            color: #fff;
+        .half-btn {
+            flex: 1;
+            padding: 6px 0;
+            border: 1px solid rgba(232, 216, 200, 0.2);
+            border-radius: 4px;
+            background: transparent;
+            color: var(--sidebar-text);
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .month-btn:hover .m-icon { opacity: 0.8; color: var(--accent); }
-        .month-btn:hover .m-days { opacity: 0.6; }
+        .half-btn:hover {
+            background: rgba(232, 93, 74, 0.15);
+            border-color: var(--accent);
+        }
 
-        .month-btn.active {
+        .half-btn.active {
             background: var(--accent);
             border-color: var(--accent);
             color: #fff;
-            box-shadow: 0 4px 16px rgba(217,79,59,0.45);
+            box-shadow: 0 2px 8px rgba(217, 79, 59, 0.3);
         }
 
-        .month-btn.active .m-icon { opacity: 1; color: #fff; }
+        .month-btn { display: none; } /* 隐藏旧按钮样式 */
         .month-btn.active .m-days { opacity: 0.8; }
 
         .print-section { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
@@ -249,16 +249,19 @@
         .month-content {
             width: 100%;
             height: 100%;
-            padding: 6mm 8mm;
+            padding: 5mm 8mm; /* 稍微减小上下边距，从 6mm 减至 5mm */
             display: flex;
             flex-direction: column;
         }
 
         .page-header {
             text-align: center;
-            padding-bottom: 3mm;
-            margin-bottom: 3mm;
+            padding-bottom: 2mm; /* 从 3mm 减至 2mm */
+            margin-bottom: 2mm; /* 从 3mm 减至 2mm */
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .page-header::after {
@@ -276,7 +279,7 @@
             font-size: 10pt;
             color: var(--muted);
             letter-spacing: 3px;
-            margin-bottom: 1mm;
+            margin-bottom: 0.5mm; /* 从 1mm 减至 0.5mm */
         }
 
         .page-main-title .deco {
@@ -285,26 +288,58 @@
             font-size: 9pt;
         }
 
+        .page-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6mm;
+            margin-top: 1mm; /* 从 2mm 减至 1mm */
+        }
+
         .page-month-name {
             font-family: 'ZCOOL KuaiLe', cursive;
             font-size: 24pt;
             color: var(--accent);
             letter-spacing: 4px;
-            line-height: 1.2;
+            line-height: 1.1; /* 稍微压缩行高，从 1.2 减至 1.1 */
+            white-space: nowrap;
         }
 
         .page-period {
             font-family: 'ZCOOL KuaiLe', cursive;
             font-size: 14pt;
             color: var(--warm);
-            margin-top: 1mm;
+            white-space: nowrap;
         }
 
         .page-subtitle {
             font-size: 7.5pt;
             color: var(--muted);
-            margin-top: 1.5mm;
             letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .page-header-row .footer-line {
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+            font-size: 9pt;
+        }
+
+        .page-header-row .footer-label {
+            white-space: nowrap;
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 14pt;
+            color: var(--warm);
+            font-weight: 500;
+        }
+
+        .page-header-row .footer-underline {
+            display: inline-block;
+            width: 20mm;
+            border-bottom: 1.2px solid var(--fg); /* 稍微加粗一点 */
+            margin-left: 1mm;
+            transform: translateY(8px); /* 进一步下移，确保其在文字底部 */
         }
 
         .days-area {
@@ -312,20 +347,20 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            gap: 2.5mm;
-            padding: 2mm 0;
+            gap: 2.8mm; /* 再大一点 */
+            padding: 1mm 0;
         }
 
         .day-row {
             display: flex;
             align-items: center;
-            height: 9mm;
+            height: 8.6mm; /* 再大一点 */
             gap: 2.5mm;
         }
 
         .day-row.separator {
             border-top: 0.5px dashed #EDE5DC;
-            padding-top: 2.5mm;
+            padding-top: 2.8mm;
         }
 
         .day-num {
@@ -525,16 +560,16 @@
             <div class="sidebar-brand">
                 <span class="sidebar-brand-icon"><i class="fas fa-fan"></i></span>
                 <div class="sidebar-title">小红花奖励册</div>
-                <div class="version-badge">A5-A 上半月</div>
+                <div class="version-badge">A5 全月版</div>
             </div>
-            <div class="sidebar-desc">1-15日 · 宽松舒适版<br>每行12格贴纸</div>
+            <div class="sidebar-desc">上半月 (1-15日) / 下半月 (16日-月底)<br>每行12格贴纸</div>
             <div class="month-grid" id="monthGrid" role="tablist"></div>
             <div class="print-section">
                 <button class="print-btn print-btn-primary" onclick="printCurrent()">
-                    <i class="fas fa-print"></i> 打印上半月 (A)
+                    <i class="fas fa-print"></i> 打印当前页
                 </button>
                 <button class="print-btn print-btn-outline" onclick="printAll()">
-                    <i class="fas fa-layer-group"></i> 打印全年A页
+                    <i class="fas fa-layer-group"></i> 打印全年(24页)
                 </button>
             </div>
             <div class="sidebar-tip">配合 A5-B 使用<br>完整记录整月</div>
@@ -565,11 +600,10 @@
             'fa-cloud-sun', 'fa-mountain', 'fa-moon', 'fa-gift'
         ];
 
-        /* A5-A版 - 上半月(1-15日)，每行12格，格子更大更美观 */
+        /* 1-15日/16日-月底，每行12格 */
         const SLOTS_PER_ROW = 12;
-        const START_DAY = 1;
-        const END_DAY = 15;
         let currentMonth = new Date().getMonth();
+        let isFirstHalf = true; /* 当前选择的是上半月还是下半月 */
 
         function getDaysInMonth(m) {
             return new Date(2025, m + 1, 0).getDate();
@@ -581,11 +615,15 @@
             return dow === 0 || dow === 6;
         }
 
-        function buildMonthHTML(m, isPrint) {
+        function buildMonthHTML(m, firstHalf, isPrint) {
             let rows = '';
+            const totalDays = getDaysInMonth(m);
+            const startDay = firstHalf ? 1 : 16;
+            const endDay = firstHalf ? 15 : totalDays;
+            const periodText = firstHalf ? '上半月 01-15日' : `下半月 16-${totalDays}日`;
 
-            for (let d = START_DAY; d <= END_DAY; d++) {
-                const sepClass = (d > START_DAY && (d - START_DAY) % 5 === 0) ? ' separator' : '';
+            for (let d = startDay; d <= endDay; d++) {
+                const sepClass = (d > startDay && (d - startDay) % 5 === 0) ? ' separator' : '';
                 const weClass = isWeekend(m, d) ? ' weekend' : '';
 
                 let slots = '';
@@ -595,7 +633,7 @@
 
                 rows += `
                     <div class="day-row${sepClass}">
-                        <div class="day-num${weClass}">${d}</div>
+                        <div class="day-num${weClass}">${d.toString().padStart(2, '0')}</div>
                         <div class="day-slots">${slots}</div>
                     </div>`;
             }
@@ -611,24 +649,18 @@
                                 每日奖励小红花
                                 <span class="deco">✿</span>
                             </div>
-                            <div class="page-month-name">${MONTH_NAMES[m]}</div>
-                            <div class="page-period">上半月 1-15日</div>
-                            <div class="page-subtitle">A5-A版 · 每行${SLOTS_PER_ROW}格 · 配合B页使用</div>
-                        </header>
-                        <div class="days-area">${rows}</div>
-                        <footer class="page-footer">
-                            <div class="footer-info">
+                            <div class="page-header-row">
+                                <div class="page-month-name">${MONTH_NAMES[m]}</div>
+                                <div class="page-period">${periodText}</div>
                                 <div class="footer-line">
                                     <span class="footer-label">姓名</span>
                                     <span class="footer-underline"></span>
                                 </div>
-                                <div class="footer-line">
-                                    <span class="footer-label">上半月总计</span>
-                                    <span class="footer-underline"></span>
-                                    <span class="footer-label">朵</span>
-                                </div>
                             </div>
-                            <div class="footer-brand">✿ A5-A ✿</div>
+                        </header>
+                        <div class="days-area">${rows}</div>
+                        <footer class="page-footer">
+                            <!-- 页脚内容已删除 -->
                         </footer>
                     </div>
                 </div>`;
@@ -636,22 +668,28 @@
 
         function renderGrid() {
             const grid = document.getElementById('monthGrid');
-            grid.innerHTML = MONTH_NAMES.map((name, i) => {
-                const active = i === currentMonth ? ' active' : '';
-                return `
-                    <button class="month-btn${active}" onclick="switchMonth(${i})" role="tab">
-                        <span class="m-icon"><i class="fas ${MONTH_ICONS[i]}"></i></span>
-                        <span>${name}</span>
-                        <span class="m-days">1-15日</span>
-                    </button>`;
-            }).join('');
+            let html = '';
+            MONTH_NAMES.forEach((name, i) => {
+                const activeA = (i === currentMonth && isFirstHalf) ? ' active' : '';
+                const activeB = (i === currentMonth && !isFirstHalf) ? ' active' : '';
+                html += `
+                    <div class="month-group">
+                        <div class="month-label">${name}</div>
+                        <div class="half-btns">
+                            <button class="half-btn${activeA}" onclick="switchMonth(${i}, true)" role="tab">上</button>
+                            <button class="half-btn${activeB}" onclick="switchMonth(${i}, false)" role="tab">下</button>
+                        </div>
+                    </div>`;
+            });
+            grid.innerHTML = html;
         }
 
-        function switchMonth(i) {
+        function switchMonth(i, firstHalf) {
             currentMonth = i;
+            isFirstHalf = firstHalf;
             renderGrid();
             const paper = document.getElementById('a5Paper');
-            paper.innerHTML = buildMonthHTML(i, false);
+            paper.innerHTML = buildMonthHTML(i, firstHalf, false);
             const mc = paper.querySelector('.month-content');
             mc.classList.remove('fade-in');
             void mc.offsetWidth;
@@ -660,7 +698,7 @@
 
         function printCurrent() {
             const area = document.getElementById('printArea');
-            area.innerHTML = buildMonthHTML(currentMonth, true);
+            area.innerHTML = buildMonthHTML(currentMonth, isFirstHalf, true);
             requestAnimationFrame(() => {
                 setTimeout(() => window.print(), 120);
             });
@@ -670,7 +708,8 @@
             const area = document.getElementById('printArea');
             let html = '';
             for (let i = 0; i < 12; i++) {
-                html += buildMonthHTML(i, true);
+                html += buildMonthHTML(i, true, true);
+                html += buildMonthHTML(i, false, true);
             }
             area.innerHTML = html;
             requestAnimationFrame(() => {
