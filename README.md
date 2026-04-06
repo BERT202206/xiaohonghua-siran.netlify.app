@@ -1,112 +1,69 @@
-# 小红花奖励册
+# 小红花奖励册 🌸
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/deploy-status)](https://xiaohonghua-siran.netlify.app)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/BERT202206/xiaohonghua-siran.netlify.app/releases/tag/v1.0.0)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-> 一个用于帮助孩子养成好习惯的精美可打印奖励卡生成器
+> 每日奖励小红花 A5 打印模板 - 专为儿童设计的习惯养成打卡工具
 
-**两个版本可用：**
-- 📄 **A4版** (`index.html`) - 大尺寸，每行20格
-- 📋 **A5版** (`a5.html`) - 便携尺寸，每行24格
+## ✨ 功能特点
 
-## 功能特点
+- **A5 尺寸** - 148mm × 210mm，适合打印和装订成册
+- **上下半月分离** - A5-A 页（1-15日）和 A5-B 页（16日-月底）
+- **统一格式** - 所有月份行间距一致，大小月格式相同
+- **12格贴纸位** - 每行 12 个圆形贴纸位，适合奖励贴纸
+- **精美设计** - 温暖配色，卡通风格，儿童友好
 
-- 全年12个月份支持，自动计算每月天数
-- 周末日期自动标红
-- **A4版**：每行20个贴纸位，自适应铺满
-- **A5版**：每行24个贴纸位，小巧便携
-- A4/A5纸张完美适配，支持直接打印
-- 优雅的动画效果和响应式设计
-- 支持导出PDF（通过浏览器打印功能）
+## 📐 格式规格
 
-## 在线体验
+| 参数 | 数值 |
+|------|------|
+| 纸张尺寸 | A5 (148mm × 210mm) |
+| 行高 | 8.6mm |
+| 行间距 | 2.8mm |
+| 每行格子数 | 12 格 |
+| 格子直径 | 8mm（完美圆形）|
 
-访问在线演示：[https://xiaohonghua-siran.netlify.app](https://xiaohonghua-siran.netlify.app)
+## 🚀 使用方法
 
-## 快速开始
+### 在线预览
+访问 [Netlify 部署地址](https://xiaohonghua-siran.netlify.app) 在线预览和打印
 
 ### 本地使用
-
 1. 克隆仓库
-```bash
-git clone https://github.com/yourusername/xiaohonghua-reward.git
-cd xiaohonghua-reward
-```
+   ```bash
+   git clone https://github.com/BERT202206/xiaohonghua-siran.netlify.app.git
+   ```
 
-2. 直接在浏览器中打开 `index.html` 文件
+2. 打开 `a5-a.html` 文件，选择月份预览
 
-### 部署到 Netlify
+3. 点击「打印当前页」或「打印全年(24页)」进行打印
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/yourusername/xiaohonghua-reward)
+### 打印建议
+- 纸张：A5 尺寸（或 A4 对折）
+- 打印方式：建议使用彩色打印机
+- 纸张类型：建议 120g 以上卡纸，更耐用
 
-## 使用方法
-
-1. **选择版本**：
-   - 打开 `index.html` 使用 **A4版**（210mm × 297mm，每行20格）
-   - 打开 `a5.html` 使用 **A5版**（148mm × 210mm，每行24格）
-2. **选择月份**：点击左侧边栏选择要打印的月份
-3. **预览效果**：右侧会实时显示纸张预览
-4. **打印**：
-   - 点击「打印当前月」打印选中月份
-   - 点击「打印全年」打印12个月份
-5. **保存PDF**：在打印对话框中选择「另存为PDF」
-
-## 版本对比
-
-| 特性 | A4版 | A5版 |
-|------|------|------|
-| 尺寸 | 210mm × 297mm | 148mm × 210mm |
-| 每行格子数 | 20格 | 24格 |
-| 适用场景 | 挂墙展示 | 随身携带 |
-| 文件 | `index.html` | `a5.html` |
-
-## 自定义配置
-
-如需修改每行贴纸数量，编辑 `assets/js/app.js`：
-
-```javascript
-const SLOTS_PER_ROW = 20;  // 修改为你想要的数量
-```
-
-## 项目结构
+## 📁 文件结构
 
 ```
-xiaohonghua-reward/
-├── index.html          # A4版主页面
-├── a5.html             # A5便携版
-├── assets/
-│   ├── css/
-│   │   └── style.css   # A4版样式文件
-│   ├── js/
-│   │   └── app.js      # A4版应用逻辑
-│   └── images/         # 图片资源
-├── docs/               # 文档
-├── LICENSE             # 许可证
-└── README.md           # 项目说明
+.
+├── a5-a.html          # A5-A 版：上半月 (1-15日)
+├── README.md          # 项目说明
+└── LICENSE            # 开源协议
 ```
 
-## 浏览器兼容性
+## 📝 更新日志
 
-- Chrome / Edge / Firefox / Safari 最新版本
-- 支持打印功能的现代浏览器
+### v1.0.0 (2026-04-06)
+- ✅ 正式发布
+- ✅ 统一上下半月行间距格式
+- ✅ 优化视觉设计
+- ✅ 支持全年 12 个月打印
 
-## 技术栈
+## 💝 致谢
 
-- HTML5
-- CSS3 (Flexbox, Grid, CSS Variables)
-- Vanilla JavaScript (ES6+)
-- Font Awesome Icons
-- Google Fonts
+感谢使用小红花奖励册！希望它能帮助孩子们养成好习惯，每天进步一点点。
 
-## 许可证
+## 📄 许可证
 
-[MIT License](LICENSE)
-
-## 致谢
-
-- 字体：[ZCOOL KuaiLe](https://fonts.google.com/specimen/ZCOOL+KuaiLe) by ZCOOL
-- 图标：[Font Awesome](https://fontawesome.com/)
-
----
-
-Made with ❤️ for kids
+MIT License
